@@ -7,10 +7,11 @@ abstract class Pokemon {
 	String apodo;
 	String estado;
 	String tipoPokemon;
-	int vida;
-	int ataque;
-	int defensa;
-	int multiplicadorDanio;
+	float vida;
+	float ataque;
+	float defensa;
+	int velocidad;
+	//Pocion pocion
 	
 /*
 * Setters
@@ -24,19 +25,17 @@ public void setEstado(String estado) {
 public void setTipoPokemon(String tipo) {
 	this.tipoPokemon = tipo;
 }
-public void setVida(int vida) {
+public void setVida(float vida) {
 	
 	this.vida = vida;
 }
-public void setAtaque(int ataque) {
+public void setAtaque(float ataque) {
 	this.ataque = ataque;
 }
-public void setDefensa(int defensa) {
+public void setDefensa(float defensa) {
 	this.defensa = defensa;
 }
-public void setMultiplicador(int multiplicador) {
-	this.multiplicadorDanio = multiplicador;
-}
+
 	
 
 /*  
@@ -50,12 +49,10 @@ public void setMultiplicador(int multiplicador) {
 	public Pokemon(String apodo) {
 		this.apodo = apodo;
 		this.estado = "OK";
-		this.tipoPokemon = "tipo";
-		this.vida = (int)(Math.random()*250+150);
-		this.ataque = (int)(Math.random()*200+150);
-		this.defensa = (int)(Math.random()*200+150);
-		this.multiplicadorDanio = 0;
-		
+		this.vida = (float)(Math.random()*100+150);
+		this.ataque = (float)(Math.random()*50+150);
+		this.defensa = (float)(Math.random()*50+150);
+		this.velocidad = (int)(Math.random()*100+100);
 	}
 
 /*
@@ -70,13 +67,13 @@ public void setMultiplicador(int multiplicador) {
 	public String getTipoPokemon() {
 		return this.tipoPokemon;
 	}
-	public int getVida() {
+	public float getVida() {
 		return this.vida;
 	}
-	public int getAtaque() {
+	public float getAtaque() {
 		return this.ataque;
 	}
-	public int setDefensa() {
+	public float getDefensa() {
 		return this.defensa;
 	}
 	
@@ -84,13 +81,15 @@ public void setMultiplicador(int multiplicador) {
  * Métodos abstractos 
  */
 	
-	public abstract void recibirDanio();
+	public abstract void recibirAtaque(Pokemon pokemon);
 	
-	public abstract void multiplicadorDanio();
+	public abstract void recibirAtaqueEspecial(Pokemon pokemon);
+	
+	public abstract float multiplicadorDanio(Pokemon pokemon);
 
-	public abstract void realizarPrimerAtaque();
+	public abstract float realizarPrimerAtaque(Pokemon enemigo);
 	
-	public abstract void realizarSegundoAtaque();
+	public abstract float realizarSegundoAtaque(Pokemon enemigo);
 	
 	
 /*
@@ -101,6 +100,14 @@ public void setMultiplicador(int multiplicador) {
 	//public void recibirPocionAtaque();
 	
 	//public void recibirPocionDefensa();
-	
+	 public void mostrarInfo() {
+		 System.out.println("Nombre: "+ this.apodo);
+		 System.out.println("Vida "+ this.vida);
+		 System.out.println("Ataque "+ this.ataque);
+		 System.out.println("Defensa "+ this.defensa);
+		 System.out.println("Estado " + this.estado);
+	 }
+	 
+	 
 
 }
