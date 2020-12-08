@@ -1,4 +1,4 @@
-
+//
 public class PocionAtaque extends Pocion {
 	public PocionAtaque() {
 		super();

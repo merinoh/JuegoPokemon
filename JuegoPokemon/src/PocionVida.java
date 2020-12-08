@@ -1,4 +1,4 @@
-
+//
 public class PocionVida extends Pocion {
 	
 	public PocionVida() {

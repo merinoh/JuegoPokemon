@@ -1,5 +1,5 @@
 public class Main {
-
+//
 	public static void main(String [] args) {
 		
 		/*
@@ -28,6 +28,7 @@ public class Main {
 		pokemon1.setApodo("HOLA");
 		
 		batalla.jugadorA.listarPokemones();
+		
 		
 	}
 }
