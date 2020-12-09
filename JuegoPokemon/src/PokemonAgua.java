@@ -3,7 +3,7 @@ public class PokemonAgua extends Pokemon {
 	/*
 	 * Atributos
 	 */
-	float ataqueAgua = (float)(Math.random()*50+150);;
+	float ataqueAgua; 
 	/*
 	 * Constructor
 	 */
@@ -11,7 +11,7 @@ public class PokemonAgua extends Pokemon {
 		// TODO Auto-generated constructor stub
 		super(apodo);
 		this.tipoPokemon = "agua";
-		
+		this.ataqueAgua = (float)(Math.random()*50+150);
 	}
 	
 	public PokemonAgua() {
@@ -28,19 +28,31 @@ public class PokemonAgua extends Pokemon {
 		
 		if(diferencia > 0) {
 			vida -= diferencia;
+			if(vida <= 0) {
+				this.vida = 0;
+				this.estado = "KO";
+				System.out.println(this.apodo + " " + this.estado);
+			}
 		}
 	}
 
 	@Override
 	public void recibirAtaqueEspecial(Pokemon enemigo) {
 		float diferencia = enemigo.realizarSegundoAtaque(this);
+		float rnd = (float)(Math.random());
+		float probabilidad = 0.2f;
 		
-		if(enemigo.estado.equals("OK")) {
+		if(enemigo.estado.equals("OK") && rnd < probabilidad) {
 			this.estado = "congelado";
 		}
 		
 		if(diferencia > 0) {
 			vida -= diferencia;
+			if(vida <= 0) {
+				this.vida = 0;
+				this.estado = "KO";
+				System.out.println(this.apodo + " " + this.estado);
+			}
 		}
 	}
 	
@@ -62,12 +74,12 @@ public class PokemonAgua extends Pokemon {
 	}
 
 	@Override
-	public float realizarPrimerAtaque(Pokemon defensor) {
+	public float realizarPrimerAtaque(Pokemon atacado) {
 		// TODO Auto-generated method stub
 		float resultado = 0;
 		
 		if(estado.equals("OK")) {
-			resultado = (this.ataque - defensor.defensa)*this.multiplicadorDanio(defensor);
+			resultado = (this.ataque - atacado.defensa)*this.multiplicadorDanio(atacado);
 		}else {
 			System.out.println(this.apodo + " está " + this.estado);
 		}

@@ -73,5 +73,80 @@ public class Batalla {
 		}
 	}
 	
-	
+	public void  iniciarLucha() {
+		Pokemon pokemon1, pokemon2;
+		Scanner sc = new Scanner(System.in);
+		int pos, ataqueA, ataqueB;
+		
+		do {
+			System.out.println(jugadorA.nombre + " con qué pokemon quieres luchar: ");
+			pos = sc.nextInt();
+			pokemon1 = jugadorA.elegirPokemon(pos);
+			System.out.println(jugadorB.nombre + " con qué pokemon quieres luchar: ");
+			pos = sc.nextInt();
+			pokemon2 = jugadorB.elegirPokemon(pos);
+			
+			
+			int velocidadP1 = pokemon1.velocidad;
+			int velocidadP2 = pokemon2.velocidad;
+			
+			System.out.println(jugadorA.nombre + " qué ataque quieres utilizar: ");
+			ataqueA = sc.nextInt();
+			System.out.println(jugadorB.nombre + " qué ataque quieres utilizar: ");
+			ataqueB = sc.nextInt();
+			
+		    if(velocidadP1 > velocidadP2) {
+		    	System.out.println("--------COMIENZA POKEMON 1--------");
+		    	if(ataqueA == 0) {
+		    		pokemon2.recibirAtaque(pokemon1);
+		    		System.out.println("----------------");
+					pokemon2.mostrarInfo();
+		    	}else {
+		    		pokemon2.recibirAtaqueEspecial(pokemon1);
+		    		System.out.println("----------------");
+					pokemon2.mostrarInfo();
+		    	}
+		    	
+		    	if(ataqueB == 0) {
+		    		pokemon2.recibirAtaque(pokemon1);
+		    		System.out.println("----------------");
+			    	pokemon1.mostrarInfo();
+		    	}else {
+		    		pokemon2.recibirAtaqueEspecial(pokemon1);
+		    		System.out.println("----------------");
+			    	pokemon1.mostrarInfo();	
+		    	}
+		    	
+				
+			
+		    }else {
+		    	
+		    	System.out.println("--------COMIENZA POKEMON 2--------");
+		    	if(ataqueB == 0) {
+		    		pokemon2.recibirAtaque(pokemon1);
+		    		System.out.println("----------------");
+			    	pokemon1.mostrarInfo();
+		    	}else {
+		    		pokemon2.recibirAtaqueEspecial(pokemon1);
+		    		System.out.println("----------------");
+			    	pokemon1.mostrarInfo();	
+		    	}
+		    	
+		    	pokemon1.recibirAtaque(pokemon2);
+		    	System.out.println("----------------");
+				pokemon1.mostrarInfo();
+				System.out.println("----------------");
+		    	pokemon2.recibirAtaque(pokemon1);
+		    	pokemon2.mostrarInfo();
+		    }
+		    
+		  
+		    boolean availableA = jugadorA.pokemonesDisponibles();
+		    boolean availableB = jugadorB.pokemonesDisponibles();
+		    
+		    if(!(availableA && availableB) ) {
+		    	break;
+		    }
+		}while(true);
+	}
 }

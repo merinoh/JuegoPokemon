@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 //
 public class Jugador {
 	/*
@@ -58,7 +57,17 @@ public class Jugador {
 	}
 	
 	public Pokemon elegirPokemon(int pos) {
+
 		return this.listaPokemon.get(pos);
 	}
 	
+	
+	public boolean pokemonesDisponibles() {
+		for(int i = 0; i < listaPokemon.size(); i++) {
+			if(listaPokemon.get(i).estado.equals("OK")) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

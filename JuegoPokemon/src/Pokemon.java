@@ -95,19 +95,14 @@ public void setDefensa(float defensa) {
 /*
  * Métodos regulares
  */
-	//public void recibirPocionVida();
 	
-	//public void recibirPocionAtaque();
-	
-	//public void recibirPocionDefensa();
 	 public void mostrarInfo() {
 		 System.out.println("Nombre: "+ this.apodo);
 		 System.out.println("Vida "+ this.vida);
 		 System.out.println("Ataque "+ this.ataque);
 		 System.out.println("Defensa "+ this.defensa);
 		 System.out.println("Estado " + this.estado);
+		 System.out.println("Velocidad " + this.velocidad );
 	 }
 	 
-	 
-
 }
