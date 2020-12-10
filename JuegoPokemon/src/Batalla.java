@@ -14,17 +14,17 @@ public class Batalla {
 	 */
 	Batalla(String nombreA, String nombreB){
 		pokemones[0] = new PokemonAgua("Articuno");
-		pokemones[1] = new PokemonAgua("Pikachu");
-		pokemones[2] = new PokemonAgua("Charmander");
-		pokemones[3] = new PokemonAgua("Moltres");
-		pokemones[4] = new PokemonAgua("Gengar");
-		pokemones[5] = new PokemonAgua("Zapdos");
-		pokemones[6] = new PokemonAgua("Snorlax");
-		pokemones[7] = new PokemonAgua("Lapras");
-		pokemones[8] = new PokemonAgua("Charizard");
-		pokemones[9] = new PokemonAgua("Tyranitar");
-		pokemones[10] = new PokemonAgua("Poliwhirl");
-		pokemones[11] = new PokemonAgua("Oddish");
+		pokemones[1] = new PokemonAgua("Squirtle");
+		pokemones[2] = new PokemonAgua("Poliwhirl");
+		pokemones[3] = new PokemonFuego("Charmander");
+		pokemones[4] = new PokemonFuego("Charizard");
+		pokemones[5] = new PokemonFuego("Moltres");
+		pokemones[6] = new PokemonElectricidad("Pikachu");
+		pokemones[7] = new PokemonElectricidad("Ampharos");
+		pokemones[8] = new PokemonElectricidad("Zapdos");
+		pokemones[9] = new PokemonHierba("Bulbasaur");
+		pokemones[10] = new PokemonHierba("Oddish");
+		pokemones[11] = new PokemonHierba("Chikorita");
 		
 		jugadorA = new Jugador(nombreA);
 		jugadorB = new Jugador(nombreB);	
