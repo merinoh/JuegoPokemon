@@ -11,6 +11,7 @@ public class PokemonElectricidad extends Pokemon {
 		super(apodo);
 		this.tipoPokemon = "electrico";
 		this.ataqueElectricidad = (float)(Math.random()*50+150);
+		this.estadoAtaque = "PARALIZADO";
 	}
 	
 	public PokemonElectricidad() {
@@ -42,7 +43,7 @@ public class PokemonElectricidad extends Pokemon {
 		float probabilidad = 0.2f;
 		
 		if(enemigo.estado.equals("OK") && rnd < probabilidad) {
-			this.estado = "paraliza";
+			this.estado = enemigo.estadoAtaque;
 		}
 		
 		if(diferencia > 0) {
@@ -94,7 +95,7 @@ public class PokemonElectricidad extends Pokemon {
 		if(estado.equals("OK")) {
 			resultado = (this.ataqueElectricidad - defensor.defensa);
 		}else {
-			System.out.println(this.apodo + " está " + this.estado);
+			System.out.println("\n\t" + this.apodo + " está " + this.estado);
 		}
 		
 		

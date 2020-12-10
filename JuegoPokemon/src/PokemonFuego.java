@@ -11,6 +11,7 @@ public class PokemonFuego extends Pokemon {
 		super(apodo);
 		this.tipoPokemon = "fuego";
 		this.ataqueFuego = (float)(Math.random()*50+150);
+		this.estadoAtaque = "QUEMADO";
 	}
 	
 	public PokemonFuego() {
@@ -42,7 +43,7 @@ public class PokemonFuego extends Pokemon {
 		float probabilidad = 0.2f;
 		
 		if(enemigo.estado.equals("OK") && rnd < probabilidad) {
-			this.estado = "quemado";
+			this.estado = enemigo.estadoAtaque;
 		}
 		
 		if(diferencia > 0) {
@@ -80,7 +81,7 @@ public class PokemonFuego extends Pokemon {
 		if(estado.equals("OK")) {
 			resultado = (this.ataque - atacado.defensa)*this.multiplicadorDanio(atacado);
 		}else {
-			System.out.println(this.apodo + " está " + this.estado);
+			System.out.println("\n\t" + this.apodo + " está " + this.estado);
 		}
 		
 		return resultado;
@@ -94,7 +95,7 @@ public class PokemonFuego extends Pokemon {
 		if(estado.equals("OK")) {
 			resultado = (this.ataqueFuego - defensor.defensa);
 		}else {
-			System.out.println(this.apodo + " está " + this.estado);
+			System.out.println("\n\t" + this.apodo + " está " + this.estado);
 		}
 		
 		

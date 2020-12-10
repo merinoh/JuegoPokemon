@@ -12,6 +12,7 @@ public class PokemonHierba extends Pokemon {
 		super(apodo);
 		this.tipoPokemon = "hierba";
 		this.ataqueHierba = (float)(Math.random()*50+150);
+		this.estadoAtaque = "ENVENENADO"; 
 	}
 	
 	public PokemonHierba() {
@@ -43,7 +44,7 @@ public class PokemonHierba extends Pokemon {
 		float probabilidad = 0.2f;
 		
 		if(enemigo.estado.equals("OK") && rnd < probabilidad) {
-			this.estado = "envenena";
+			this.estado = enemigo.estadoAtaque;
 		}
 		
 		if(diferencia > 0) {
@@ -95,7 +96,7 @@ public class PokemonHierba extends Pokemon {
 		if(estado.equals("OK")) {
 			resultado = (this.ataqueHierba - defensor.defensa);
 		}else {
-			System.out.println(this.apodo + " está " + this.estado);
+			System.out.println("\n\t" + this.apodo + " está " + this.estado);
 		}
 		
 		

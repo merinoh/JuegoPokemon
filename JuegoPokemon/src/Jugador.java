@@ -48,11 +48,22 @@ public class Jugador {
 	 */
 	
 	public void llenarListaPokemon(Pokemon pokemon, int pos) {
-		listaPokemon.add(pos, pokemon);
+		if(pokemon.tipoPokemon.equals("fuego")) {
+			listaPokemon.add(pos, new PokemonFuego(pokemon.apodo));
+		}else if(pokemon.tipoPokemon.equals("electrico")) {
+			listaPokemon.add(pos, new PokemonElectricidad(pokemon.apodo));
+		}else if(pokemon.tipoPokemon.equals("agua")) {
+			listaPokemon.add(pos, new PokemonAgua(pokemon.apodo));
+		}else if(pokemon.tipoPokemon.equals("hierba")) {
+			listaPokemon.add(pos, new PokemonHierba(pokemon.apodo));
+		}
+		
 	}
 	
 	public void listarPokemones() {
+		System.out.println("\t• • Lista de " + this.nombre + " • •");
 		for(int i = 0; i < listaPokemon.size(); i++) {
+			System.out.println("\t--------------------");
 			listaPokemon.get(i).mostrarInfo();
 		}
 	}
@@ -74,7 +85,7 @@ public class Jugador {
 	
 	public void listarPocion() {
 		for(int i = 0; i < listaPocion.length; i++) {
-			System.out.println("Poción " + i + " " + 
+			System.out.println("\tPoción " + i + " " + 
 		    listaPocion[i].tipoPocion + " " + 
 			listaPocion[i].estadoPocion);
 		}
@@ -84,7 +95,7 @@ public class Jugador {
 		int numPos;
 		listarPocion();
 		
-		System.out.println("Qué poción quieres utilizar: ");
+		System.out.println("\n\tQué poción quieres utilizar: ");
 		numPos = sc.nextInt();
 		listaPocion[numPos].aplicaPocion(listaPokemon.get(posPok));
 	}

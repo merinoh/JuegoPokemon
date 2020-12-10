@@ -12,6 +12,7 @@ public class PokemonAgua extends Pokemon {
 		super(apodo);
 		this.tipoPokemon = "agua";
 		this.ataqueAgua = (float)(Math.random()*50+150);
+		this.estadoAtaque = "CONGELADO";
 	}
 	
 	public PokemonAgua() {
@@ -43,7 +44,7 @@ public class PokemonAgua extends Pokemon {
 		float probabilidad = 0.2f;
 		
 		if(enemigo.estado.equals("OK") && rnd < probabilidad) {
-			this.estado = "congelado";
+			this.estado = enemigo.estadoAtaque;
 		}
 		
 		if(diferencia > 0) {
@@ -95,7 +96,7 @@ public class PokemonAgua extends Pokemon {
 		if(estado.equals("OK")) {
 			resultado = (this.ataqueAgua - defensor.defensa);
 		}else {
-			System.out.println(this.apodo + " está " + this.estado);
+			System.out.println("\n\t" + this.apodo + " está " + this.estado);
 		}
 		
 		

@@ -7,6 +7,7 @@ abstract class Pokemon {
 	String apodo;
 	String estado;
 	String tipoPokemon;
+	String estadoAtaque;
 	float vida;
 	float ataque;
 	float defensa;
@@ -98,13 +99,13 @@ public void setDefensa(float defensa) {
  */
 	
 	 public void mostrarInfo() {
-		 System.out.println("Nombre: "+ this.apodo);
-		 System.out.println("Vida "+ this.vida);
-		 System.out.println("Ataque "+ this.ataque);
-		 System.out.println("Defensa "+ this.defensa);
-		 System.out.println("Estado " + this.estado);
-		 System.out.println("Velocidad " + this.velocidad );
-		 System.out.println("Ataque Especial " + this.getAtaqueEspecial());
+		 System.out.println("\tApodo     : " + this.apodo);
+		 System.out.println("\tVida      : " + this.vida);
+		 System.out.println("\tAtaque(0) : " + this.ataque);
+		 System.out.println("\tDefensa   : " + this.defensa);
+		 System.out.println("\tEstado    : " + this.estado);
+		 System.out.println("\tVelocidad : " + this.velocidad );
+		 System.out.println("\tAtaque(1) : " + this.getAtaqueEspecial());
 	 }
 	 
 }
