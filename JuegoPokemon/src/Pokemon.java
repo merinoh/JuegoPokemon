@@ -11,8 +11,7 @@ abstract class Pokemon {
 	float ataque;
 	float defensa;
 	int velocidad;
-	//Pocion pocion
-	
+
 /*
 * Setters
 */
@@ -91,6 +90,8 @@ public void setDefensa(float defensa) {
 	
 	public abstract float realizarSegundoAtaque(Pokemon enemigo);
 	
+	public abstract float getAtaqueEspecial();
+	
 	
 /*
  * Métodos regulares
@@ -103,6 +104,7 @@ public void setDefensa(float defensa) {
 		 System.out.println("Defensa "+ this.defensa);
 		 System.out.println("Estado " + this.estado);
 		 System.out.println("Velocidad " + this.velocidad );
+		 System.out.println("Ataque Especial " + this.getAtaqueEspecial());
 	 }
 	 
 }

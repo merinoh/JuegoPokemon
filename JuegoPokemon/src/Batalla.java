@@ -1,5 +1,5 @@
 import java.util.Scanner;
-//
+
 public class Batalla {
 	/*
 	 * Atributos
@@ -35,10 +35,9 @@ public class Batalla {
 	 * Métodos
 	 */
 	
-	public void elegirPokemon(int numPokemon, int elegir){
+	public void elegirPokemon(int numPokemon, int elegir, Scanner sc){
 		int rnd;
 		Pokemon pokemon;
-		try (Scanner sc = new Scanner(System.in)) {
 			if(elegir == 0) {
 				//aleatorio
 				for(int i = 0; i < numPokemon; i++) {
@@ -64,7 +63,7 @@ public class Batalla {
 					jugadorB.llenarListaPokemon(pokemon, i);
 				}
 			}
-		}
+		
 	}
 	
 	public void imprimirLista() {
@@ -73,31 +72,45 @@ public class Batalla {
 		}
 	}
 	
-	public void  iniciarLucha() {
+	public void  iniciarLucha(Scanner sc) {
 		Pokemon pokemon1, pokemon2;
-		Scanner sc = new Scanner(System.in);
-		int pos, ataqueA, ataqueB;
+		int pos, ataqueA, ataqueB, pocion, posPok;
+		boolean availableA, availableB;
+		
 		
 		do {
 			System.out.println(jugadorA.nombre + " con qué pokemon quieres luchar: ");
 			pos = sc.nextInt();
 			pokemon1 = jugadorA.elegirPokemon(pos);
 			System.out.println(jugadorB.nombre + " con qué pokemon quieres luchar: ");
-			pos = sc.nextInt();
-			pokemon2 = jugadorB.elegirPokemon(pos);
+			posPok = sc.nextInt();
+			pokemon2 = jugadorB.elegirPokemon(posPok);
 			
 			
 			int velocidadP1 = pokemon1.velocidad;
 			int velocidadP2 = pokemon2.velocidad;
+			
+			System.out.println(jugadorA.nombre + " ¿Deseas utilizar una poción?: ");
+			pocion = sc.nextInt();
+			if(pocion == 1) {
+				jugadorA.utilizarPocion(sc, pos);
+			}
+	
+			System.out.println(jugadorB.nombre + " ¿Deseas utilizar una poción?: ");
+			pocion = sc.nextInt();
+			if(pocion == 1) {
+				jugadorB.utilizarPocion(sc, posPok);
+			}
 			
 			System.out.println(jugadorA.nombre + " qué ataque quieres utilizar: ");
 			ataqueA = sc.nextInt();
 			System.out.println(jugadorB.nombre + " qué ataque quieres utilizar: ");
 			ataqueB = sc.nextInt();
 			
+			
 		    if(velocidadP1 > velocidadP2) {
 		    	System.out.println("--------COMIENZA POKEMON 1--------");
-		    	if(ataqueA == 0) {
+		    	if(ataqueA == 0) {//ATAQUE BASE
 		    		pokemon2.recibirAtaque(pokemon1);
 		    		System.out.println("----------------");
 					pokemon2.mostrarInfo();
@@ -108,11 +121,11 @@ public class Batalla {
 		    	}
 		    	
 		    	if(ataqueB == 0) {
-		    		pokemon2.recibirAtaque(pokemon1);
+		    		pokemon1.recibirAtaque(pokemon2);
 		    		System.out.println("----------------");
 			    	pokemon1.mostrarInfo();
 		    	}else {
-		    		pokemon2.recibirAtaqueEspecial(pokemon1);
+		    		pokemon1.recibirAtaqueEspecial(pokemon2);
 		    		System.out.println("----------------");
 			    	pokemon1.mostrarInfo();	
 		    	}
@@ -123,30 +136,39 @@ public class Batalla {
 		    	
 		    	System.out.println("--------COMIENZA POKEMON 2--------");
 		    	if(ataqueB == 0) {
-		    		pokemon2.recibirAtaque(pokemon1);
+		    		pokemon1.recibirAtaque(pokemon2);
 		    		System.out.println("----------------");
 			    	pokemon1.mostrarInfo();
 		    	}else {
-		    		pokemon2.recibirAtaqueEspecial(pokemon1);
+		    		pokemon1.recibirAtaqueEspecial(pokemon2);
 		    		System.out.println("----------------");
 			    	pokemon1.mostrarInfo();	
 		    	}
 		    	
-		    	pokemon1.recibirAtaque(pokemon2);
-		    	System.out.println("----------------");
-				pokemon1.mostrarInfo();
-				System.out.println("----------------");
-		    	pokemon2.recibirAtaque(pokemon1);
-		    	pokemon2.mostrarInfo();
+		    	if(ataqueA == 0) {//ATAQUE BASE
+		    		pokemon2.recibirAtaque(pokemon1);
+		    		System.out.println("----------------");
+					pokemon2.mostrarInfo();
+		    	}else {
+		    		pokemon2.recibirAtaqueEspecial(pokemon1);
+		    		System.out.println("----------------");
+					pokemon2.mostrarInfo();
+		    	}
+		    	
 		    }
 		    
-		  
-		    boolean availableA = jugadorA.pokemonesDisponibles();
-		    boolean availableB = jugadorB.pokemonesDisponibles();
+		    availableA = jugadorA.pokemonesDisponibles();
+		    availableB = jugadorB.pokemonesDisponibles();
 		    
 		    if(!(availableA && availableB) ) {
 		    	break;
 		    }
 		}while(true);
+		
+		if(availableA) {
+			System.out.println(jugadorA.nombre + " ✯  W I N N E R ✯ ");
+		}else {
+			System.out.println(jugadorB.nombre + " ✯  W I N N E R ✯ ");
+		}
 	}
 }

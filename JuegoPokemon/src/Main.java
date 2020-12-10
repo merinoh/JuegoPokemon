@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
 //
 	public static void main(String [] args) {
@@ -5,12 +7,12 @@ public class Main {
 		/*
 		 * Crear Batalla
 		 */
-		
+		Scanner sc = new Scanner(System.in);
 		Batalla batalla = new Batalla("Ailyn", "Ruben");
 		
-		batalla.elegirPokemon(1, 1);
+		batalla.elegirPokemon(2, 1, sc);
 		
-		batalla.iniciarLucha();
+		batalla.iniciarLucha(sc);
 		
 	}
 }

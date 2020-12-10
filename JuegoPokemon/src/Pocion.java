@@ -1,14 +1,15 @@
 //
 abstract class Pocion {
 	/*
-	 * No tiene atributos
+	 * Atributos
 	 */
-	
+	String tipoPocion;
+	String estadoPocion;
 	/*
 	 * Constructor
 	 */
 	public Pocion() {
-		
+		this.estadoPocion = "Llena";
 	}
 	
 	/*

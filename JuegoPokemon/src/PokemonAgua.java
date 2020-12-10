@@ -102,4 +102,8 @@ public class PokemonAgua extends Pokemon {
 		return resultado;
 	}
 	
+	public float getAtaqueEspecial() {
+		return this.ataqueAgua;
+	}
+	
 }

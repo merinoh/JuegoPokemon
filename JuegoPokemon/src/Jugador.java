@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 //
 public class Jugador {
 	/*
@@ -70,4 +71,23 @@ public class Jugador {
 		}
 		return false;
 	}
+	
+	public void listarPocion() {
+		for(int i = 0; i < listaPocion.length; i++) {
+			System.out.println("Poción " + i + " " + 
+		    listaPocion[i].tipoPocion + " " + 
+			listaPocion[i].estadoPocion);
+		}
+	}
+	
+	public void utilizarPocion(Scanner sc, int posPok) {
+		int numPos;
+		listarPocion();
+		
+		System.out.println("Qué poción quieres utilizar: ");
+		numPos = sc.nextInt();
+		listaPocion[numPos].aplicaPocion(listaPokemon.get(posPok));
+	}
+	
+	
 }
