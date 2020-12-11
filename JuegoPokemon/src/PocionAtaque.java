@@ -1,10 +1,17 @@
-//
+/**
+ * 
+ * @author Ailyn y Ruben
+ * Clase que hereda de la clase pocion
+ */
 public class PocionAtaque extends Pocion {
 	public PocionAtaque() {
 		super();
 		this.tipoPocion = "Poción ataque";
 	}
-	
+/**
+ *  Metodo que sobre-escribe el metodo de aplicar pocion
+ *  Aumenta el ataque en un 10%
+ */
 	@Override
 	public void aplicaPocion(Pokemon pokemon) {
 		// TODO Auto-generated method stub
@@ -19,7 +26,7 @@ public class PocionAtaque extends Pocion {
 		}else {
 			pokemon.setAtaque(200);
 		}
-		
+		//deshecha la pocion
 		this.estadoPocion = "Utilizada";
 	}
 }

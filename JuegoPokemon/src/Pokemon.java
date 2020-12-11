@@ -1,51 +1,107 @@
-//
-abstract class Pokemon {
-/*
- * 	Atributos Pokemon
+/**
+ * Clase abstracta Pokemon
  */
+abstract class Pokemon {
+	//---------------------------------------------
+	//					Atributos
+	//---------------------------------------------
 	
+	/**
+	 * Apodo del pokemon
+	 */
 	String apodo;
+	/**
+	 * Muestra si el pokemon esta disponible para combatir
+	 * <b>post: </b> estados posibles: OK, PARALIZADO, CONGELADO, FUEFO y KO
+	 */
 	String estado;
+	/**
+	 * Existen cuatro tipos de pokemones
+	 * <b>post: </b>tipos posibles: Agua, hierba, fuego y electricidad
+	 */
 	String tipoPokemon;
+	/**
+	 * Habilidad que posee un pokemon para cambiar el estado de otro pokemon
+	 */
 	String estadoAtaque;
+	/**
+	 * <b>post: </b>La vida de un pokemon tiene un maximo de 250 puntos
+	 */
 	float vida;
+	/**
+	 * <b>post: </b>El ataque de un pokemon tiene un maximo de 200 puntos
+	 */
 	float ataque;
+	/**
+	 * <b>post: </b>La defensa de un pokemon tiene un maximo de 200 puntos
+	 */
 	float defensa;
+	/**
+	 * <b>post: </b>La velocidad e de un pokemon tiene un maximo de 200 puntos
+	 */
 	int velocidad;
 
-/*
-* Setters
-*/
+	//---------------------------------------------
+	//					Setters
+	//---------------------------------------------
+
+/**
+ * 
+ * @param apodo
+ */
 public void setApodo(String apodo) {
 	this.apodo = apodo;
 }
+/**
+ * 
+ * @param estado
+ */
 public void setEstado(String estado) {
 	this.estado = estado;
 }
+/**
+ * 
+ * @param tipo
+ */
 public void setTipoPokemon(String tipo) {
 	this.tipoPokemon = tipo;
 }
+/**
+ * 
+ * @param vida
+ */
 public void setVida(float vida) {
 	
 	this.vida = vida;
 }
+/**
+ *
+ * @param ataque
+ */
 public void setAtaque(float ataque) {
 	this.ataque = ataque;
 }
+/**
+ * 
+ * @param defensa
+ */
 public void setDefensa(float defensa) {
 	this.defensa = defensa;
 }
 
 	
 
-/*  
- * Constructor
- */
+//---------------------------------------------
+//					CONSTRUCTORES
+//---------------------------------------------
 	
 	public Pokemon() {
 		
 	}
-	
+	/**
+	 * 
+	 * @param apodo
+	 */
 	public Pokemon(String apodo) {
 		this.apodo = apodo;
 		this.estado = "OK";
@@ -55,49 +111,99 @@ public void setDefensa(float defensa) {
 		this.velocidad = (int)(Math.random()*100+100);
 	}
 
-/*
- * Getters
+//---------------------------------------------
+//	 			GETTERS
+//---------------------------------------------
+	
+/**
+ * 
+ * @return el apodo del pokemon
  */
 	public String getApodo() {
 		return this.apodo;
 	}
+/**
+ * 
+ * @return el estado del pokemon
+ */
 	public String getEstado() {
 		return this.estado;
 	}
+/**
+ * 
+ * @return el tipo del pokemon
+ */
 	public String getTipoPokemon() {
 		return this.tipoPokemon;
 	}
+/**
+ * 
+ * @return los puntos de vida del pokemon
+ */
 	public float getVida() {
 		return this.vida;
 	}
+/**
+ * 
+ * @return los puntos de ataque del pokemon
+ */
 	public float getAtaque() {
 		return this.ataque;
 	}
+/**
+ * 
+ * @return los puntos de defensa del pokemon
+ */
 	public float getDefensa() {
 		return this.defensa;
 	}
 	
-/*
- * Métodos abstractos 
- */
-	
-	public abstract void recibirAtaque(Pokemon pokemon);
-	
-	public abstract void recibirAtaqueEspecial(Pokemon pokemon);
-	
-	public abstract float multiplicadorDanio(Pokemon pokemon);
+//---------------------------------------------
+//		METODOS ABSTRACTOS
+//---------------------------------------------
 
+/**
+ * 
+ * @param pokemon que realiza el ataque
+ */
+	public abstract void recibirAtaque(Pokemon pokemon);
+/**
+ * 
+ * @param pokemon que realiza el ataque
+ */
+	public abstract void recibirAtaqueEspecial(Pokemon pokemon);
+/**
+ * 
+ * @param pokemon que realiza el ataque
+ * @return el multiplicado de daño del pokemon que va a atacar
+ */
+	public abstract float multiplicadorDanio(Pokemon pokemon);
+/**
+ * 
+ * @param enemigo que calcula su ataque
+ * @return valor del ataque que se calcula incluyendo el multiplicador
+ */
 	public abstract float realizarPrimerAtaque(Pokemon enemigo);
-	
+/**
+ * 
+ * @param enemigo que calcula ataque especial segun el tipo de pokemon
+ * @return el daño que realiza el ataque
+ */
 	public abstract float realizarSegundoAtaque(Pokemon enemigo);
-	
+/**
+ * 
+ * @return el ataque especial de cada tipo de pokemon
+ */
 	public abstract float getAtaqueEspecial();
 	
 	
-/*
- * Métodos regulares
+//---------------------------------------------
+//		METODOS REGULARES
+//---------------------------------------------
+
+/**
+ * Muestra la informacion de cada pokemon
  */
-	
 	 public void mostrarInfo() {
 		 System.out.println("\tApodo     : " + this.apodo);
 		 System.out.println("\tVida      : " + this.vida);

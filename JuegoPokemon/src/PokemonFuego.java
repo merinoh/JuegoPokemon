@@ -1,16 +1,23 @@
 public class PokemonFuego extends Pokemon {
-	/*
-	 * Atributos
+	//---------------------------------------------
+	//					Atributos
+	//---------------------------------------------
+	
+	/**
+	 * Valor distinto al ataque base que es especifico del pokemon de fuego
 	 */
 	float ataqueFuego; 
-	/*
-	 * Constructor
-	 */
+
+	//-----------------------------------------------------------------
+    // 					Constructor
+    //-----------------------------------------------------------------
+	
 	public PokemonFuego(String apodo) {
 		// TODO Auto-generated constructor stub
 		super(apodo);
 		this.tipoPokemon = "fuego";
 		this.ataqueFuego = (float)(Math.random()*50+150);
+		//Estado que modifica el estado de su oponente
 		this.estadoAtaque = "QUEMADO";
 	}
 	
@@ -18,8 +25,13 @@ public class PokemonFuego extends Pokemon {
 		
 	}
 
-	/*
-	 * Métodos abstractos
+	//-----------------------------------------------------------------
+    // 					METODOS ABSTRACTOS
+    //-----------------------------------------------------------------
+	/**
+	 * Metodo sobre-escrito que recibe el ataque del pokemon enemigo
+	 * modifica la vida del pokemon atacado
+	 * @param enemigo
 	 */
 	@Override
 	public void recibirAtaque(Pokemon enemigo) {
@@ -35,7 +47,12 @@ public class PokemonFuego extends Pokemon {
 			}
 		}
 	}
-
+	/**
+	 * Metodo sobre-escrito que recibe el ataque especial del pokemon enemigo
+	 * modifica la vida del pokemon atacado y posiblemnte su estado
+	 * dependiendo de una probabilidad definida se cambia el estado del pokemon
+	 * @param enemigo
+	 */
 	@Override
 	public void recibirAtaqueEspecial(Pokemon enemigo) {
 		float diferencia = enemigo.realizarSegundoAtaque(this);
@@ -55,7 +72,10 @@ public class PokemonFuego extends Pokemon {
 			}
 		}
 	}
-	
+	/**
+	 * Metodo sobre-escrito que recibe el ataque del pokemon enemigo
+	 * @return el multiplicador de daño dependiendo del tipo de enemigo
+	 */
 	@Override
 	public float multiplicadorDanio(Pokemon enemigo) {
 		float multiplicadorDanio = 0;
@@ -72,7 +92,11 @@ public class PokemonFuego extends Pokemon {
 		
 		return multiplicadorDanio;
 	}
-
+	/**
+	 * Metodo sobre-escrito que calcula el ataque dependiendo del pokemon que se ataca
+	 * @param atacado
+	 * @return el valor del daño que realiza
+	 */
 	@Override
 	public float realizarPrimerAtaque(Pokemon atacado) {
 		// TODO Auto-generated method stub
@@ -86,7 +110,11 @@ public class PokemonFuego extends Pokemon {
 		
 		return resultado;
 	}
-	
+	/**
+	 * Metodo sobre-escrito que realiza el ataque especial dependiendo del tipo de pokemon
+	 * calcula el valor del daño que se realiza al cpontrincante
+	 * @param enemigo
+	 */
 	@Override
 	public float realizarSegundoAtaque(Pokemon defensor) {
 		// TODO Auto-generated method stub
@@ -101,7 +129,9 @@ public class PokemonFuego extends Pokemon {
 		
 		return resultado;
 	}
-	
+/**
+ * @return el valor del ataque especial del pokemon
+ */
 	public float getAtaqueEspecial() {
 		return this.ataqueFuego;
 	}

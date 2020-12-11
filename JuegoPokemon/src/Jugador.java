@@ -1,18 +1,26 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-//
+
 public class Jugador {
-	/*
-	 * Atributos
-	 */
+	//---------------------------------------------
+	//					Atributos
+	//---------------------------------------------
 	
+	/**
+	 * Nombre del jugador
+	 */
 	String nombre;
+	/**
+	 * Arreglo para guardar las pociones
+	 * Un jugador puede tener hasta 6 pociones
+	 * 2 pociones de cada tipo diferente
+	 */
 	Pocion [] listaPocion = new Pocion[6];
 	ArrayList<Pokemon> listaPokemon = new ArrayList<Pokemon>();
 	
-	/*
-	 * Constructores
-	 */
+	//-----------------------------------------------------------------
+    // 					Constructor
+    //-----------------------------------------------------------------
 	public Jugador() {
 		
 	}
@@ -28,25 +36,30 @@ public class Jugador {
 		listaPocion[5] = new PocionDefensa();
 		//
 	}
-	
-	/*
-	 * Setter
-	 */
+
+	//-----------------------------------------------------------------
+    // 					SETTERS
+    //-----------------------------------------------------------------
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	
-	/*
-	 * Getter
-	 */
+	//-----------------------------------------------------------------
+    // 					SETTERS
+    //-----------------------------------------------------------------
 	public String getNombre() {
 		return this.nombre;
 	}
 	
-	/*
-	 * Métodos
+	//-----------------------------------------------------------------
+    // 					METODOS
+    //-----------------------------------------------------------------
+
+	/**
+	 * Llena la lista de pokemones del jugador
+	 * @param pokemon el pokemon que se elige del gimnasio
+	 * @param pos de la lista en la que se guarda el pokemon
 	 */
-	
 	public void llenarListaPokemon(Pokemon pokemon, int pos) {
 		if(pokemon.tipoPokemon.equals("fuego")) {
 			listaPokemon.add(pos, new PokemonFuego(pokemon.apodo));
@@ -59,7 +72,10 @@ public class Jugador {
 		}
 		
 	}
-	
+
+/**
+ * Lista los pokemones del jugador
+ */
 	public void listarPokemones() {
 		System.out.println("\t• • Lista de " + this.nombre + " • •");
 		for(int i = 0; i < listaPokemon.size(); i++) {
@@ -67,13 +83,20 @@ public class Jugador {
 			listaPokemon.get(i).mostrarInfo();
 		}
 	}
-	
+/**
+ * 
+ * @param pos del pokemon que quiere luchar
+ * @return el pokemon que va a luchar
+ */
 	public Pokemon elegirPokemon(int pos) {
 
 		return this.listaPokemon.get(pos);
 	}
 	
-	
+/**
+ * Metodo que verifica que el jugador todavia tiene pokemones para pelear
+ * @return verdadero si hay al menos un pokemon con estado "OK"para pelear
+ */
 	public boolean pokemonesDisponibles() {
 		for(int i = 0; i < listaPokemon.size(); i++) {
 			if(listaPokemon.get(i).estado.equals("OK")) {
@@ -82,7 +105,9 @@ public class Jugador {
 		}
 		return false;
 	}
-	
+/**
+ * Lista las pociones del usuario
+ */
 	public void listarPocion() {
 		for(int i = 0; i < listaPocion.length; i++) {
 			System.out.println("\tPoción " + i + " " + 
@@ -90,7 +115,11 @@ public class Jugador {
 			listaPocion[i].estadoPocion);
 		}
 	}
-	
+/**
+ * 
+ * @param sc lee los datos de entrada por teclado
+ * @param posPok posicion del pokemon al que se le aplica la pocion
+ */
 	public void utilizarPocion(Scanner sc, int posPok) {
 		int numPos;
 		listarPocion();
