@@ -12,6 +12,7 @@ public class PocionVida extends Pocion {
 	/**
 	 *  Metodo que sobre-escribe el metodo de aplicar pocion
 	 *  Aumenta la vida en un 20%
+	 *  @param pokemon que recibe la pocion
 	 */
 	@Override
 	public void aplicaPocion(Pokemon pokemon) {

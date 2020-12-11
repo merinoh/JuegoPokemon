@@ -127,6 +127,7 @@ public class Batalla {
 	
 	/**
 	 * Metodo para iniciar batalla 
+	 * @param sc para leer las opciones del usuario
 	 */
 	public void  iniciarLucha(Scanner sc) {
 		//pokemones contrincantes

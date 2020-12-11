@@ -11,6 +11,7 @@ public class PocionAtaque extends Pocion {
 /**
  *  Metodo que sobre-escribe el metodo de aplicar pocion
  *  Aumenta el ataque en un 10%
+ *  @param pokemon que recibe la pocion
  */
 	@Override
 	public void aplicaPocion(Pokemon pokemon) {
