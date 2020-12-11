@@ -94,10 +94,20 @@ public class Jugador {
 	public void utilizarPocion(Scanner sc, int posPok) {
 		int numPos;
 		listarPocion();
+		try {
+			System.out.println("\n\tQué poción quieres utilizar: ");
+			numPos = sc.nextInt();
+			if(numPos > this.listaPocion.length-1) {
+				throw new OpcionInvalida();
+			}else {
+				listaPocion[numPos].aplicaPocion(listaPokemon.get(posPok));
+			}
+			
+		}catch(OpcionInvalida e) {
+			System.out.println(e.getMessage());
+			utilizarPocion(sc, posPok);
+		}
 		
-		System.out.println("\n\tQué poción quieres utilizar: ");
-		numPos = sc.nextInt();
-		listaPocion[numPos].aplicaPocion(listaPokemon.get(posPok));
 	}
 	
 	

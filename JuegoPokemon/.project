@@ -14,21 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/PokemonElectricidad.java</name>
-			<type>1</type>
-			<location>/Users/mxmghost/Downloads/PokemonElectricidad.java</location>
-		</link>
-		<link>
-			<name>src/PokemonFuego.java</name>
-			<type>1</type>
-			<location>/Users/mxmghost/Downloads/PokemonFuego.java</location>
-		</link>
-		<link>
-			<name>src/PokemonHierba.java</name>
-			<type>1</type>
-			<location>/Users/mxmghost/Downloads/PokemonHierba.java</location>
-		</link>
-	</linkedResources>
 </projectDescription>
